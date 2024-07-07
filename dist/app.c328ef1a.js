@@ -5405,35 +5405,35 @@ var weatherCity = /*#__PURE__*/function () {
             _context.next = 6;
             break;
           }
-          window.alert("Please enter a City");
-          _context.next = 12;
+          window.alert("Please enter a City Name");
+          _context.next = 17;
           break;
         case 6:
-          console.log(city);
-          //const res =
+          _context.prev = 6;
           _context.next = 9;
           return _axios.default.get("http://api.weatherapi.com/v1/current.json?key=".concat(apiKey, "&q=").concat(city));
         case 9:
           res = _context.sent;
-          console.log(res);
-          try {
-            if (res.status !== 200) {
-              window.alert("City not found. Enter a valid City");
-            } else {
-              cityData = res.data;
-              weatherInfo(cityData);
-            }
-          } catch (err) {
-            console.log(err);
+          if (res.status === 200) {
+            cityData = res.data;
+            weatherInfo(cityData);
+          } else {
+            window.alert("City not found. Enter a valid City");
           }
-        case 12:
+          _context.next = 17;
+          break;
+        case 13:
+          _context.prev = 13;
+          _context.t0 = _context["catch"](6);
+          console.error("Error fetching data:", _context.t0);
+          window.alert("City not found. Enter a valid City");
+        case 17:
           inputWeather.value = "";
-          console.log(city);
-        case 14:
+        case 18:
         case "end":
           return _context.stop();
       }
-    }, _callee);
+    }, _callee, null, [[6, 13]]);
   }));
   return function weatherCity(_x) {
     return _ref.apply(this, arguments);
@@ -5451,7 +5451,7 @@ var weatherInfo = function weatherInfo(data) {
   var weatherIcon = data.current.condition.icon;
   var weatherData = document.createElement("div");
   weatherData.classList.add("card");
-  weatherData.innerHTML = "\n     <h1>".concat(location, ", ").concat(region, "</h1>\n          <h1>").concat(temperature, "\xB0F</h1>\n          <img src=\"").concat(weatherIcon, "\"></img>\n          <p>").concat(weatherCondition, "</p>\n          <p> Humidity: ").concat(humidity, "% <img width=\"20\" height=\"18\" src=\"https://img.icons8.com/color/48/dew-point.png\" alt=\"dew-point\"/></p>       \n          <p>Wind speed: ").concat(wind, "mph <img width=\"20\" height=\"15\" src=\"https://img.icons8.com/ios/50/wind--v1.png\" alt=\"wind--v1\"/></p>\n          <p>Feels Like: ").concat(feelsLike, "</p>\n          \n          \n  ");
+  weatherData.innerHTML = "\n     <h1>".concat(location, ", ").concat(region, "</h1>\n          <h1>").concat(temperature, "\xB0F</h1>\n          <img src=\"").concat(weatherIcon, "\"></img>\n         <p><strong>").concat(weatherCondition, "</strong></p>\n          <p><strong> Humidity: ").concat(humidity, "% <img width=\"20\" height=\"18\" src=\"https://img.icons8.com/color/48/dew-point.png\" alt=\"dew-point\"/></strong></p>     \n          <p><strong>Wind speed: ").concat(wind, "mph <img width=\"20\" height=\"15\" src=\"https://img.icons8.com/ios/50/wind--v1.png\" alt=\"wind--v1\"/></strong></p>\n         <p> <strong>Feels Like: ").concat(feelsLike, "</strong></p>\n          \n          \n  ");
   container.textContent = "";
   container.appendChild(weatherData);
 };
@@ -5480,7 +5480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "48239" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39876" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

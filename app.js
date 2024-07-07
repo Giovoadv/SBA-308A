@@ -11,29 +11,26 @@ const weatherCity = async (e) => {
   const city = document.querySelector("#myInput").value;
 
   if (city === "") {
-    window.alert("Please enter a City");
+    window.alert("Please enter a City Name");
   } else {
-    console.log(city);
-    //const res =
-    const res = await axios.get(
-      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
-    );
-
-    console.log(res);
     try {
-      if (res.status !== 200) {
-        window.alert("City not found. Enter a valid City");
-      } else {
+      const res = await axios.get(
+        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
+      );
+
+      if (res.status === 200) {
         const cityData = res.data;
         weatherInfo(cityData);
+      } else {
+        window.alert("City not found. Enter a valid City");
       }
     } catch (err) {
-      console.log(err);
+      console.error("Error fetching data:", err);
+      window.alert("City not found. Enter a valid City");
     }
   }
 
   inputWeather.value = "";
-  console.log(city);
 };
 searchButton.addEventListener("click", weatherCity);
 
@@ -53,10 +50,10 @@ const weatherInfo = (data) => {
      <h1>${location}, ${region}</h1>
           <h1>${temperature}°F</h1>
           <img src="${weatherIcon}"></img>
-          <p>${weatherCondition}</p>
-          <p> Humidity: ${humidity}% <img width="20" height="18" src="https://img.icons8.com/color/48/dew-point.png" alt="dew-point"/></p>       
-          <p>Wind speed: ${wind}mph <img width="20" height="15" src="https://img.icons8.com/ios/50/wind--v1.png" alt="wind--v1"/></p>
-          <p>Feels Like: ${feelsLike}</p>
+         <p><strong>${weatherCondition}</strong></p>
+          <p><strong> Humidity: ${humidity}% <img width="20" height="18" src="https://img.icons8.com/color/48/dew-point.png" alt="dew-point"/></strong></p>     
+          <p><strong>Wind speed: ${wind}mph <img width="20" height="15" src="https://img.icons8.com/ios/50/wind--v1.png" alt="wind--v1"/></strong></p>
+         <p> <strong>Feels Like: ${feelsLike}</strong></p>
           
           
   `;

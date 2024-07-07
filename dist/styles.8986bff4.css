@@ -2,6 +2,9 @@ body {
   height: 100vh;
   background: linear-gradient(135deg, #62b8f5, #4475ef);
 }
+.title {
+  color: white;
+}
 
 :root {
   --white: #ffffff;
@@ -88,6 +91,14 @@ button:hover {
   border-radius: 0.6em;
   box-shadow: 0 1.8em 3.7em var(--shadow);
   outline: none;
+}
+
+.card p {
+  margin: 5px;
+}
+
+.card h1:first-child {
+  color: white;
 }
 
 
