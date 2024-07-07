@@ -19,7 +19,10 @@ How to Use:
 
 APIs Used:
 
-WeatherAPI: Used to fetch current weather data for the entered city.
+WeatherAPI: 
+
+Used to fetch current weather data for the entered city.
+
     -Endpoint: http://api.weatherapi.com/v1/current.json
     -Parameters: key (API key), q (city name)
 
@@ -33,5 +36,6 @@ To run the application locally:
 
     1. Clone this repository.
     2. Open the terminal in VSCODE.
-    3. Enter "npm start"
-    4. Ensure a stable internet connection to fetch weather data.
+    3. Run npm install
+    4. Enter "npm start"
+    5. Ensure a stable internet connection to fetch weather data.
